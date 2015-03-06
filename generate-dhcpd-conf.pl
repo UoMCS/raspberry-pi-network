@@ -33,18 +33,18 @@ $sth->execute();
 
 while (my $row = $sth->fetchrow_hashref)
 {
-	my $padded_serial = sprintf('%04d', $row->{'serial_number'});
-	my $short_year = $row->{'academic_year'} - 2000;
+  my $padded_serial = sprintf('%04d', $row->{'serial_number'});
+  my $short_year = $row->{'academic_year'} - 2000;
 
-	my %data = (
-	  'year' => $short_year,
-		'serial_number' => $padded_serial,
-		'mac_address' => $row->{'mac_address'},
-		'ip_address' => $row->{'ip_address'}
-	);
+  my %data = (
+    'year' => $short_year,
+    'serial_number' => $padded_serial,
+    'mac_address' => $row->{'mac_address'},
+    'ip_address' => $row->{'ip_address'}
+  );
 
   $config_hosts	.= "\n";
-	$config_hosts .= tt->render('client-device.tt', \%data);
+  $config_hosts .= tt->render('client-device.tt', \%data);
 }
 
 $dbh->disconnect;
