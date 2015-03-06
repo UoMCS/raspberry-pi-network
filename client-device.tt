@@ -1,0 +1,6 @@
+host p[% year %]-[% serial_number %]
+{
+  option host-name "p[% year %]-[% serial_number %]";
+  hardware ethernet [% mac_address %];
+  fixed-address [% ip_address %];
+}
